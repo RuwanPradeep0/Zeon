@@ -21,13 +21,10 @@ const SignUp = () => {
 
   const submit = async() =>{
 
-    console.log("submitting 1")
-
     if(!form.username || !form.email || !form.password){
       Alert.alert('Error' , 'Please fill in all the fields')
     }
-  //  setisSubmitting(true)
-  console.log("submitting 2")
+   setisSubmitting(true)
 
     try{
       console.log('in')
@@ -36,8 +33,6 @@ const SignUp = () => {
         form.password,
         form.username
       )
-
-      console.log("submitted")
      
 
       //set it to global state
@@ -47,7 +42,7 @@ const SignUp = () => {
     }catch(error){
       Alert.alert('Error' , error.message)
     }finally{
-      // setisSubmitting(false)
+      setisSubmitting(false)
     }
 
   }
