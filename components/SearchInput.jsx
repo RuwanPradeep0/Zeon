@@ -1,14 +1,15 @@
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import { icons } from '@/constants'
+import { usePathname } from 'expo-router'
 
 
 
-const SearchInput =({title , value , placeholder , handleChangeText,otherStyles , ...props}) => {
+const SearchInput =() => {
   
-    const[showPassword , setShowPassword] = useState(false)
-  
-  
+   
+  const pathname = usePathname()
+  const[query , setQuey] = useState('')
   
     return (
  

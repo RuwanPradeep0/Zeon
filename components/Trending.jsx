@@ -28,6 +28,8 @@ const zoomOut= {
 
 const TrendingItem = ({activeItem, item}) =>{
 
+  console.log(item)
+
   const[play , setPlay] = useState(false)
   return(
     <Animatable.View
@@ -44,7 +46,9 @@ const TrendingItem = ({activeItem, item}) =>{
             useNativeControls
             shouldPlay
             onPlaybackStatusUpdate={(status) =>{
-              if()
+              if(status.didJustFinish){
+                setPlay(false);
+              }
             }}
           
           />
