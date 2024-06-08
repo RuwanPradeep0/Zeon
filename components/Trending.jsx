@@ -1,5 +1,5 @@
-import { View, Text, FlatList, TouchableOpacity, ImageBackground, Image } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, FlatList, TouchableOpacity, ImageBackground, Image   } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
 
 import * as Animatable from 'react-native-animatable';
 import { icons } from '@/constants';
@@ -28,30 +28,40 @@ const zoomOut= {
 
 const TrendingItem = ({activeItem, item}) =>{
 
-  console.log(item)
+
+ 
 
   const[play , setPlay] = useState(false)
+
+//aditional
+const [isLoading, setIsLoading] = useState(true);
+const videoRef = useRef(null);
+
+
   return(
+
+
     <Animatable.View
       className= "mr-5"
       animation ={activeItem === item.$id ? zoomIn : zoomOut}
       duration={500}
       >
+        
 
         {play ? (
-          <Video
-            source={{uri:item.video}}
-            className="w-52 h-72 rounded-[35px] mt-3 bg-white/10"
-            resizeMode={ResizeMode.CONTAIN}
-            useNativeControls
-            shouldPlay
-            onPlaybackStatusUpdate={(status) =>{
-              if(status.didJustFinish){
-                setPlay(false);
-              }
-            }}
           
-          />
+           <Video
+           source={{ uri: item.video }}
+           className="w-52 h-72 rounded-[33px] mt-3 bg-white/10"
+           resizeMode={ResizeMode.CONTAIN}
+           useNativeControls
+           shouldPlay={true}
+           onPlaybackStatusUpdate={(status) => {
+             if (status.didJustFinish) {
+               setPlay(false);
+             }
+           }}
+         />
           
         ):(
           <TouchableOpacity className = "relative justify-center items-center"

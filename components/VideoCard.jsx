@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity,ActivityIndicator  } from 'react-native'
 import React, { useState } from 'react'
 import { icons } from '@/constants'
 import { ResizeMode, Video } from 'expo-av';
@@ -6,6 +6,9 @@ import { ResizeMode, Video } from 'expo-av';
 const VideoCard = ({video:{title , thumbnail , video ,creator:{userName ,avatar}}}) => {
   
     const[play , setPlay] = useState(false);
+
+    ///aditional
+    
   
 
     return (
@@ -58,7 +61,7 @@ const VideoCard = ({video:{title , thumbnail , video ,creator:{userName ,avatar}
         ) : (
             <TouchableOpacity
                 activeOpacity={0.7}
-                onPress={() => setplay(true)}
+                onPress={() => setPlay(true)}
                 className ="w-full h-60 rounded-xl mt-3 relative justify-center items-center">
                     
                     <Image 
