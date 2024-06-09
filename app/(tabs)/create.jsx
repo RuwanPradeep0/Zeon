@@ -8,6 +8,7 @@ import * as DocumentPicker from 'expo-document-picker'
 import { router } from 'expo-router'
 import { createVideo } from '@/lib/appwrite'
 import { useGlobalContext } from '@/context/GlobalProvider'
+import * as ImagePicker from 'expo-image-picker';
 
 const Create = () => {
 
@@ -24,11 +25,11 @@ const[form , setForm] = useState({
 })
 
 const openPicker = async(selectType) =>{
-  const result = await DocumentPicker.getDocumentAsync(
+  const result = await ImagePicker.launchImageLibraryAsync(
     {
-      type : selectType === 'image'
-       ? ['image/*']
-      : ['video/mp4' , 'video/gif']
+      mediaTypes: selectType === 'image' ? ImagePicker.MediaTypeOptions.Images: ImagePicker.MediaTypeOptions.Videos,
+      aspect: [4, 3],
+      quality: 1,
     }
   )
 
